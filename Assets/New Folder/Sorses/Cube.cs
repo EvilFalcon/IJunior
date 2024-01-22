@@ -4,7 +4,7 @@ using UnityEngine;
 public class Cube : MovementComponentBase
 {
     private Vector3 _vector3;
-    [SerializeField, Range(0, 2)] private float _speed;
+    [SerializeField, Range(0, 30)] private float _speed;
 
     private void Awake()
     {
