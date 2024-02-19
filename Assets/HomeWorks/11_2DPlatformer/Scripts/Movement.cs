@@ -46,7 +46,7 @@ namespace Platformer2D
 
             _isGround = Physics2D.OverlapCircle(_groundChecker.position, _groundRadius, _groundMask);
 
-            Debug.Log(Input.GetKeyDown(KeyCode.Space) );
+            Debug.Log(_isGround) ;
             
             if (Input.GetKeyDown(KeyCode.Space) && _isGround)
                 _rigidbody2D.AddForce(Vector2.up * _jumpForce);
