@@ -1,8 +1,7 @@
-using UnityEngine;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime.Attributes;
 using UnityEditor;
-using Cainos.LucidEditor;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor.Attributes
 {
     [CustomGroupProcessor(typeof(HorizontalGroupAttribute))]
     public class HorizontalGroupAttributeProcessor : PropertyGroupProcessor

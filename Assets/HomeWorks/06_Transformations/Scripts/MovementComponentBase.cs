@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace New_Folder.Sorses
+namespace HomeWorks._06_Transformations.Scripts
 {
     public abstract class MovementComponentBase : MonoBehaviour
     {

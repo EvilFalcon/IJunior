@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.Utils;
 using UnityEditor;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor
 {
     public static class LucidEditorPrefs
     {

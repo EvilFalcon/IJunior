@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace Cainos.Common
+namespace Download.Cainos.Common.Script.Utils
 {
     [System.Serializable]
     public struct SecondOrderDynamics

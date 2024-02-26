@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor
 {
     public static class LucidGUIEvent
     {

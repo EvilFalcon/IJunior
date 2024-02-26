@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.Utils;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime;
 using UnityEditor;
-using Cainos.LucidEditor;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor.InspectorProperty
 {
     public sealed class InspectorPropertyGroup : InspectorProperty
     {

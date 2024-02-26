@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor
 {
     public static class SerializedPropertyUtility
     {

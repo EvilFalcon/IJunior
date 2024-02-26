@@ -1,7 +1,8 @@
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.Extensions;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime.Attributes;
 using UnityEditor;
-using Cainos.LucidEditor;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor.Attributes
 {
     [CustomAttributeProcessor(typeof(HorizontalLineAttribute))]
     public class HorizontalLineAttributeProcessor : PropertyProcessor

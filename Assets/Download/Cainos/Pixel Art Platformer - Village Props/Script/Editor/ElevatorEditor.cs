@@ -1,13 +1,10 @@
-﻿using UnityEditor;
-using UnityEngine;
-using System.Collections;
-using Cainos.LucidEditor;
+﻿using Download.Cainos.Third_Party.Lucid_Editor.Editor;
+using UnityEditor;
 
-
-namespace Cainos.PixelArtPlatformer_VillageProps
+namespace Download.Cainos.Pixel_Art_Platformer___Village_Props.Script.Editor
 {
     [CustomEditor(typeof(Elevator))]
-    public class ElevatorEditor : LucidEditor.LucidEditor
+    public class ElevatorEditor : LucidEditor
     {
     }
 }

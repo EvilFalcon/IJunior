@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace HealthBar
+namespace HomeWorks._14_HealthBar.Scripts
 {
     public class Health : MonoBehaviour
     {
@@ -11,6 +11,7 @@ namespace HealthBar
         private float _min = 0;
 
         public float Max => _max;
+
         public float CurrentValue
         {
             get => _currentValue;

@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Linq;
-using UnityEngine;
+using System.Reflection;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.Extensions;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.Utils;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
-using Cainos.LucidEditor;
+using UnityEngine;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor.InspectorProperty
 {
     public class InspectorField : InspectorProperty
     {

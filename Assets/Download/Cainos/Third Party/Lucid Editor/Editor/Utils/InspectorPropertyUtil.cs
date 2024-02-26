@@ -2,17 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using UnityEngine;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.Extensions;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.InspectorProperty;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime.Attributes;
 using UnityEditor;
-using Cainos.LucidEditor;
+using UnityEngine;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor.Utils
 {
     internal static class InspectorPropertyUtil
     {
-        public static IEnumerable<InspectorProperty> CreateProperties(SerializedObject serializedObject)
+        public static IEnumerable<InspectorProperty.InspectorProperty> CreateProperties(SerializedObject serializedObject)
         {
-            var list = new List<InspectorProperty>();
+            var list = new List<InspectorProperty.InspectorProperty>();
             SerializedProperty iterator = serializedObject.GetIterator();
 
             iterator.NextVisible(true);
@@ -28,9 +31,9 @@ namespace Cainos.LucidEditor
             return list;
         }
 
-        public static IEnumerable<InspectorProperty> CreateChildProperties(InspectorField property)
+        public static IEnumerable<InspectorProperty.InspectorProperty> CreateChildProperties(InspectorField property)
         {
-            var list = new List<InspectorProperty>();
+            var list = new List<InspectorProperty.InspectorProperty>();
 
             if (property.serializedProperty.hasVisibleChildren &&
                 (property.serializedProperty.propertyType == SerializedPropertyType.Generic || property.serializedProperty.propertyType == SerializedPropertyType.ManagedReference) &&
@@ -56,9 +59,9 @@ namespace Cainos.LucidEditor
             return list;
         }
 
-        public static IEnumerable<InspectorProperty> CreateButtonsAndNonSerializedProperties(SerializedObject serializedObject, object targetObject)
+        public static IEnumerable<InspectorProperty.InspectorProperty> CreateButtonsAndNonSerializedProperties(SerializedObject serializedObject, object targetObject)
         {
-            var list = new List<InspectorProperty>();
+            var list = new List<InspectorProperty.InspectorProperty>();
 
             foreach (MemberInfo memberInfo in ReflectionUtil.GetAllMembers(targetObject.GetType(), (BindingFlags)(-1), inherit: true))
             {
@@ -123,9 +126,9 @@ namespace Cainos.LucidEditor
         }
 
         //draw editable property
-        public static IEnumerable<InspectorProperty> CreateEditableProperties(SerializedObject serializedObject, object targetObject)
+        public static IEnumerable<InspectorProperty.InspectorProperty> CreateEditableProperties(SerializedObject serializedObject, object targetObject)
         {
-            var list = new List<InspectorProperty>();
+            var list = new List<InspectorProperty.InspectorProperty>();
 
             foreach (MemberInfo memberInfo in ReflectionUtil.GetAllMembers(targetObject.GetType(), (BindingFlags)(-1), inherit: true))
             {
@@ -146,15 +149,15 @@ namespace Cainos.LucidEditor
             return list;
         }
 
-        public static IEnumerable<InspectorProperty> GroupProperties(IEnumerable<InspectorProperty> properties)
+        public static IEnumerable<InspectorProperty.InspectorProperty> GroupProperties(IEnumerable<InspectorProperty.InspectorProperty> properties)
         {
-            List<List<InspectorProperty>> groupList = new List<List<InspectorProperty>>();
+            List<List<InspectorProperty.InspectorProperty>> groupList = new List<List<InspectorProperty.InspectorProperty>>();
 
-            List<InspectorProperty> propertyList = new List<InspectorProperty>(properties);
-            List<InspectorProperty> usedProperties = new List<InspectorProperty>();
+            List<InspectorProperty.InspectorProperty> propertyList = new List<InspectorProperty.InspectorProperty>(properties);
+            List<InspectorProperty.InspectorProperty> usedProperties = new List<InspectorProperty.InspectorProperty>();
 
-            Dictionary<InspectorProperty, List<PropertyGroupAttribute>> paDictionary = new Dictionary<InspectorProperty, List<PropertyGroupAttribute>>();
-            foreach (InspectorProperty property in propertyList)
+            Dictionary<InspectorProperty.InspectorProperty, List<PropertyGroupAttribute>> paDictionary = new Dictionary<InspectorProperty.InspectorProperty, List<PropertyGroupAttribute>>();
+            foreach (InspectorProperty.InspectorProperty property in propertyList)
             {
                 paDictionary.Add(property, new List<PropertyGroupAttribute>());
                 paDictionary[property].AddRange(
@@ -167,9 +170,9 @@ namespace Cainos.LucidEditor
             int depth = 0;
             while (propertyList.Count > 0)
             {
-                groupList.Add(new List<InspectorProperty>());
+                groupList.Add(new List<InspectorProperty.InspectorProperty>());
 
-                foreach (InspectorProperty property in propertyList)
+                foreach (InspectorProperty.InspectorProperty property in propertyList)
                 {
                     PropertyGroupAttribute attribute = paDictionary[property].FirstOrDefault(x => x.groupDepth == depth);
 
@@ -213,7 +216,7 @@ namespace Cainos.LucidEditor
                     }
                 }
 
-                foreach (InspectorProperty property in usedProperties)
+                foreach (InspectorProperty.InspectorProperty property in usedProperties)
                 {
                     propertyList.Remove(property);
                 }
@@ -221,7 +224,7 @@ namespace Cainos.LucidEditor
                 depth++;
             }
 
-            return groupList.Count > 0 ? groupList[0] : new List<InspectorProperty>();
+            return groupList.Count > 0 ? groupList[0] : new List<InspectorProperty.InspectorProperty>();
         }
 
     }

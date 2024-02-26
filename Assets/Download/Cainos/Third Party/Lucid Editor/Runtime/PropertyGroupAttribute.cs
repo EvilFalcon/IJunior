@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Runtime
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
     public class PropertyGroupAttribute : Attribute

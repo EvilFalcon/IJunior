@@ -1,9 +1,8 @@
+using Download.Cainos.Common.Script.Utils;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime.Attributes;
 using UnityEngine;
 
-using Cainos.LucidEditor;
-using Cainos.Common;
-
-namespace Cainos.PixelArtPlatformer_VillageProps
+namespace Download.Cainos.Pixel_Art_Platformer___Village_Props.Script
 {
     public class Elevator : MonoBehaviour
     {

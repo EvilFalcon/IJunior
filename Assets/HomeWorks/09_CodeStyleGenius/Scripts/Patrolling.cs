@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CodeStyleGenius
+namespace HomeWorks._09_CodeStyleGenius.Scripts
 {
     public class Patrolling : MonoBehaviour
     {

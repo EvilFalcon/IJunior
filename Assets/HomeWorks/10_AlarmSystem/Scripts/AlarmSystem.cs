@@ -1,19 +1,21 @@
 using UnityEngine;
-using UnityEngine.Events;
 
-public class AlarmSystem : MonoBehaviour
+namespace HomeWorks._10_AlarmSystem.Scripts
 {
-    [SerializeField] private Siren _siren;
-
-    private void OnTriggerEnter(Collider collider)
+    public class AlarmSystem : MonoBehaviour
     {
-        if (collider.TryGetComponent<Player>(out Player player))
-            _siren.UpVolume();
-    }
+        [SerializeField] private Siren _siren;
 
-    private void OnTriggerExit(Collider collider)
-    {
-        if (collider.TryGetComponent<Player>(out Player player))
-            _siren.DownVolume();
+        private void OnTriggerEnter(Collider collider)
+        {
+            if (collider.TryGetComponent<Player>(out Player player))
+                _siren.UpVolume();
+        }
+
+        private void OnTriggerExit(Collider collider)
+        {
+            if (collider.TryGetComponent<Player>(out Player player))
+                _siren.DownVolume();
+        }
     }
 }

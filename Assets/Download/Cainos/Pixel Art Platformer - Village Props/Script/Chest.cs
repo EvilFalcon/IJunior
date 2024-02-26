@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime.Attributes;
 using UnityEngine;
-using Cainos.LucidEditor;
 
-namespace Cainos.PixelArtPlatformer_VillageProps
+namespace Download.Cainos.Pixel_Art_Platformer___Village_Props.Script
 {
     public class Chest : MonoBehaviour
     {

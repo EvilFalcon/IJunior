@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HealthBar
+namespace HomeWorks._14_HealthBar.Scripts
 {
     [RequireComponent(typeof(Health))]
     public class Bar : MonoBehaviour

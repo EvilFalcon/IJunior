@@ -1,19 +1,21 @@
-using New_Folder.Sorses;
 using UnityEngine;
 
-public class Capsule : MovementComponentBase
+namespace HomeWorks._06_Transformations.Scripts
 {
-    [SerializeField] private Vector3 _targetScale;
-    [SerializeField, Range(0.1f, 1)] private float _speed;
-
-
-    protected override void Move()
+    public class Capsule : MovementComponentBase
     {
-        SetScale(_targetScale);
-    }
+        [SerializeField] private Vector3 _targetScale;
+        [SerializeField, Range(0.1f, 1)] private float _speed;
 
-    private void SetScale(Vector3 target)
-    {
-        transform.localScale = Vector3.MoveTowards(transform.localScale, target, Time.deltaTime * _speed);
+
+        protected override void Move()
+        {
+            SetScale(_targetScale);
+        }
+
+        private void SetScale(Vector3 target)
+        {
+            transform.localScale = Vector3.MoveTowards(transform.localScale, target, Time.deltaTime * _speed);
+        }
     }
 }

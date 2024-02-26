@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GeneratingEnemies
+namespace HomeWorks._07_GeneratingEnemies.Scripts
 {
     public class Spawner : MonoBehaviour
     {

@@ -1,11 +1,12 @@
-using Cainos.LucidEditor;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.Utils;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime.Attributes;
 using UnityEditor;
 using UnityEngine;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor.InspectorProperty
 {
     public sealed class EditableInspectorProperty : InspectorProperty
     {

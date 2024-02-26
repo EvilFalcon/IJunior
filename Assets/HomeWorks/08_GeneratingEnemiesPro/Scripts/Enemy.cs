@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GeneratingEnemiesPro
+namespace HomeWorks._08_GeneratingEnemiesPro.Scripts
 {
     public class Enemy : MonoBehaviour
     {

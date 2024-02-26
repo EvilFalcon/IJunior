@@ -1,12 +1,14 @@
-using New_Folder.Sorses;
 using UnityEngine;
 
-public class Sphere : MovementComponentBase
+namespace HomeWorks._06_Transformations.Scripts
 {
-    [SerializeField, Range(0, 3)] private float _speed;
-
-    protected override void Move()
+    public class Sphere : MovementComponentBase
     {
-        transform.Translate(Vector3.forward * (_speed * Time.deltaTime));
+        [SerializeField, Range(0, 3)] private float _speed;
+
+        protected override void Move()
+        {
+            transform.Translate(Vector3.forward * (_speed * Time.deltaTime));
+        }
     }
 }

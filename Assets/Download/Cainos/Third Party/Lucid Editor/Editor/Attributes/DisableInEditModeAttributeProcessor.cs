@@ -1,7 +1,7 @@
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime.Attributes;
 using UnityEngine;
-using Cainos.LucidEditor;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor.Attributes
 {
     [CustomAttributeProcessor(typeof(DisableInEditModeAttribute))]
     public class DisableInEditModeAttributeProcessor : PropertyProcessor

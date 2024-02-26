@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace HomeWorks._10_AlarmSystem.Scripts
 {
+    public class Player : MonoBehaviour
+    {
 
+    }
 }

@@ -1,17 +1,18 @@
 using System;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.InspectorProperty;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime;
 using UnityEditor;
-using Cainos.LucidEditor;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor.Utils
 {
     internal static class ProcessorUtil
     {
         private static Type[] cacheAttributeProcessorTypes;
         private static Type[] cacheGroupProcessorTypes;
 
-        public static PropertyProcessor CreateAttributeProcessor(InspectorProperty property, Attribute attribute)
+        public static PropertyProcessor CreateAttributeProcessor(InspectorProperty.InspectorProperty property, Attribute attribute)
         {
             if (cacheAttributeProcessorTypes == null)
             {

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using UnityEngine;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime.Attributes;
 using UnityEditor;
-using Cainos.LucidEditor;
+using UnityEngine;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor.Attributes
 {
     [CustomGroupProcessor(typeof(TabGroupAttribute))]
     public class TabGroupAttributeProcessor : PropertyGroupProcessor
@@ -16,7 +16,7 @@ namespace Cainos.LucidEditor
             selected = GetLocalPersistentData<int>("selected");
 
             List<string> tabList = new List<string>();
-            foreach (InspectorProperty property in group.childProperties)
+            foreach (InspectorProperty.InspectorProperty property in group.childProperties)
             {
                 TabGroupAttribute att = property.GetAttribute<TabGroupAttribute>();
                 if (!tabList.Contains(att.tabName)) tabList.Add(att.tabName);
@@ -29,7 +29,7 @@ namespace Cainos.LucidEditor
             LucidEditorGUILayout.BeginLayoutIndent(EditorGUI.indentLevel);
             selected.Value = LucidEditorGUILayout.BeginTabGroup(selected.Value, tabArray, GUILayout.MinWidth(0));
 
-            foreach (InspectorProperty property in group.childProperties)
+            foreach (InspectorProperty.InspectorProperty property in group.childProperties)
             {
                 TabGroupAttribute att = property.GetAttribute<TabGroupAttribute>();
                 if (att != null)

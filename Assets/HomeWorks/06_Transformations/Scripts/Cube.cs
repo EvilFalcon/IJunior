@@ -1,12 +1,14 @@
-using New_Folder.Sorses;
 using UnityEngine;
 
-public class Cube : MovementComponentBase
+namespace HomeWorks._06_Transformations.Scripts
 {
-    [SerializeField, Range(0, 30)] private float _speed;
-
-    protected override void Move()
+    public class Cube : MovementComponentBase
     {
-        transform.Rotate(Vector3.up * (Time.deltaTime * _speed));
+        [SerializeField, Range(0, 30)] private float _speed;
+
+        protected override void Move()
+        {
+            transform.Rotate(Vector3.up * (Time.deltaTime * _speed));
+        }
     }
 }

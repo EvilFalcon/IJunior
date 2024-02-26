@@ -1,15 +1,15 @@
 using System;
 using UnityEditor;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor
 {
     public abstract class PropertyProcessor
     {
         public Attribute attribute => _attribute;
         internal Attribute _attribute;
 
-        public InspectorProperty property => _inspectorProperty;
-        internal InspectorProperty _inspectorProperty;
+        public InspectorProperty.InspectorProperty property => _inspectorProperty;
+        internal InspectorProperty.InspectorProperty _inspectorProperty;
 
         public LocalPersistentData<T> GetLocalPersistentData<T>(string id)
         {

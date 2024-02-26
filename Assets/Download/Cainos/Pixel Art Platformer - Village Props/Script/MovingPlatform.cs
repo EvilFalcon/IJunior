@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Cainos.PixelArtPlatformer_VillageProps
+namespace Download.Cainos.Pixel_Art_Platformer___Village_Props.Script
 {
     //moving platform
     //used on a moving platform so that objects fallen on this platform will perfectly follow to it

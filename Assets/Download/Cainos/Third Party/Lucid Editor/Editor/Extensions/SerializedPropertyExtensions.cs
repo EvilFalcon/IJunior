@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
-using UnityEngine;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.Utils;
 using UnityEditor;
+using UnityEngine;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor.Extensions
 {
     public static class SerializedPropertyExtensions
     {

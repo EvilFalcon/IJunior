@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace HealthBar
+namespace HomeWorks._14_HealthBar.Scripts
 {
     [RequireComponent(typeof(Slider))]
     public class SmoothSlider : MonoBehaviour

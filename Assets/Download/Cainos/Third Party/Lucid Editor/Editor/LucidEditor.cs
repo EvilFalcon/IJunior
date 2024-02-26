@@ -1,13 +1,12 @@
 using System.Linq;
-using UnityEngine;
-using UnityEditor;
-using Cainos.LucidEditor;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.Utils;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime.Attributes;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor
 {
     public class LucidEditor : UnityEditor.Editor
     {
-        private InspectorProperty[] properties;
+        private InspectorProperty.InspectorProperty[] properties;
 
         internal bool hideMonoScript;
         //internal bool disableEditor;
@@ -43,7 +42,7 @@ namespace Cainos.LucidEditor
         private void InitializeProperties()
         {
             properties = InspectorPropertyUtil.GroupProperties(InspectorPropertyUtil.CreateProperties(serializedObject)).ToArray();
-            foreach (InspectorProperty property in properties)
+            foreach (InspectorProperty.InspectorProperty property in properties)
             {
                 property.Initialize();
             }
@@ -51,7 +50,7 @@ namespace Cainos.LucidEditor
 
         private void ResetProperties()
         {
-            foreach (InspectorProperty property in properties)
+            foreach (InspectorProperty.InspectorProperty property in properties)
             {
                 property.Reset();
             }
@@ -59,7 +58,7 @@ namespace Cainos.LucidEditor
 
         private void DrawAllProperties()
         {
-            foreach (InspectorProperty property in properties.OrderBy(x => x.order))
+            foreach (InspectorProperty.InspectorProperty property in properties.OrderBy(x => x.order))
             {
                 property.Draw();
             }
@@ -67,7 +66,7 @@ namespace Cainos.LucidEditor
 
         private void OnBeforeInspectorGUI()
         {
-            foreach (InspectorProperty property in properties.OrderBy(x => x.order))
+            foreach (InspectorProperty.InspectorProperty property in properties.OrderBy(x => x.order))
             {
                 property.OnBeforeInspectorGUI();
             }
@@ -75,7 +74,7 @@ namespace Cainos.LucidEditor
 
         private void OnAfterInspectorGUI()
         {
-            foreach (InspectorProperty property in properties.OrderBy(x => x.order))
+            foreach (InspectorProperty.InspectorProperty property in properties.OrderBy(x => x.order))
             {
                 property.OnAfterInspectorGUI();
             }

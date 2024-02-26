@@ -1,8 +1,9 @@
 using System;
+using Download.Cainos.Third_Party.Lucid_Editor.Editor.InspectorProperty;
+using Download.Cainos.Third_Party.Lucid_Editor.Runtime;
 using UnityEditor;
-using Cainos.LucidEditor;
 
-namespace Cainos.LucidEditor
+namespace Download.Cainos.Third_Party.Lucid_Editor.Editor
 {
     public abstract class PropertyGroupProcessor
     {

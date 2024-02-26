@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace GeneratingEnemiesPro
+namespace HomeWorks._08_GeneratingEnemiesPro.Scripts
 {
     public class Target : MonoBehaviour
     {
