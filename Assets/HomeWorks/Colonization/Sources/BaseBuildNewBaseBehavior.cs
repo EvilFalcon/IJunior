@@ -1,28 +1,31 @@
-public class BaseBuildNewBaseBehavior : IBaseBehavior
+namespace HomeWorks.Colonization.Sources
 {
-    private int _copperCountForNewBase = 5;
-    private Base _base;
-    private bool _isSent;
-
-    public BaseBuildNewBaseBehavior(Base currentBase)
+    public class BaseBuildNewBaseBehavior : IBaseBehavior
     {
-        _base = currentBase;
-    }
+        private int _copperCountForNewBase = 5;
+        private Base _base;
+        private bool _isSent;
 
-    public void Enter()
-    {
-        _isSent = false;
-    }
-
-    public void Run()
-    {
-        if (_isSent == false && _base.TryBuildNewBase(_copperCountForNewBase))
+        public BaseBuildNewBaseBehavior(Base currentBase)
         {
-            _isSent = true;
+            _base = currentBase;
         }
-        else if (_isSent == false && _base.TryBuildNewBase(_copperCountForNewBase) == false)
+
+        public void Enter()
         {
-            _base.ReserveWorkerForBuldingNewBase(_copperCountForNewBase);
+            _isSent = false;
+        }
+
+        public void Run()
+        {
+            if (_isSent == false && _base.TryBuildNewBase(_copperCountForNewBase))
+            {
+                _isSent = true;
+            }
+            else if (_isSent == false && _base.TryBuildNewBase(_copperCountForNewBase) == false)
+            {
+                _base.ReserveWorkerForBuldingNewBase(_copperCountForNewBase);
+            }
         }
     }
 }

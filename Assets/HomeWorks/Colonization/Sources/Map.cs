@@ -1,86 +1,89 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(FlagSetter))]
-[RequireComponent(typeof(ClickListener))]
-[RequireComponent(typeof(ResourseCollector))]
-[RequireComponent(typeof(WorkerSpawner))]
-public class Map : MonoBehaviour
+namespace HomeWorks.Colonization.Sources
 {
-    [SerializeField] private Base _basePrefab;
-    [SerializeField] private Base _startBase;
-
-    private ResourseCollector _resourseCollector;
-    private FlagSetter _flagSetter;
-    private ClickListener _clickListener;
-    private WorkerSpawner _workerSpawner;
-    private List<Base> _bases;
-    private Base _currentBase;
-
-    public void Awake()
+    [RequireComponent(typeof(FlagSetter))]
+    [RequireComponent(typeof(ClickListener))]
+    [RequireComponent(typeof(ResourseCollector))]
+    [RequireComponent(typeof(WorkerSpawner))]
+    public class Map : MonoBehaviour
     {
-        _resourseCollector = GetComponent<ResourseCollector>();
-        _flagSetter = GetComponent<FlagSetter>();
-        _workerSpawner = GetComponent<WorkerSpawner>();
-        _clickListener = GetComponent<ClickListener>();
-        _bases = new List<Base>();
+        [SerializeField] private Base _basePrefab;
+        [SerializeField] private Base _startBase;
 
-        InitializeBase(_startBase);
-    }
+        private ResourseCollector _resourseCollector;
+        private FlagSetter _flagSetter;
+        private ClickListener _clickListener;
+        private WorkerSpawner _workerSpawner;
+        private List<Base> _bases;
+        private Base _currentBase;
 
-    private void OnEnable()
-    {
-        AddNewBase(_startBase);
-    }
-
-    private void OnDisable()
-    {
-        foreach (Base currentBase in _bases)
+        public void Awake()
         {
-            currentBase.PlayerClicked -= OnPlayerBaseClicked;
-            currentBase.WorkerBuiltBase -= OnWorkerBuiltBase;
+            _resourseCollector = GetComponent<ResourseCollector>();
+            _flagSetter = GetComponent<FlagSetter>();
+            _workerSpawner = GetComponent<WorkerSpawner>();
+            _clickListener = GetComponent<ClickListener>();
+            _bases = new List<Base>();
+
+            InitializeBase(_startBase);
         }
 
-        _clickListener.MapClicked -= OnMapClicked;
-    }
+        private void OnEnable()
+        {
+            AddNewBase(_startBase);
+        }
 
-    private void AddNewBase(Base newBase)
-    {
-        newBase.PlayerClicked += OnPlayerBaseClicked;
-        _bases.Add(newBase);
-    }
+        private void OnDisable()
+        {
+            foreach (Base currentBase in _bases)
+            {
+                currentBase.PlayerClicked -= OnPlayerBaseClicked;
+                currentBase.WorkerBuiltBase -= OnWorkerBuiltBase;
+            }
 
-    private void OnPlayerBaseClicked(Base clickedBase)
-    {
-        _clickListener.MapClicked += OnMapClicked;
-        _currentBase = clickedBase;
-    }
+            _clickListener.MapClicked -= OnMapClicked;
+        }
 
-    private void OnMapClicked(Vector3 flagPosition)
-    {
-        Transform flag = _flagSetter.ShowFlag(flagPosition, _currentBase.transform.position);
-        _currentBase.TakeFlag(flag);
-        _currentBase.WorkerBuiltBase += OnWorkerBuiltBase;
-    }
+        private void AddNewBase(Base newBase)
+        {
+            newBase.PlayerClicked += OnPlayerBaseClicked;
+            _bases.Add(newBase);
+        }
 
-    private void OnWorkerBuiltBase(Worker worker, Transform flagPosition, Base baseOfCreater)
-    {
-        Vector3 basePosition = flagPosition.position;
+        private void OnPlayerBaseClicked(Base clickedBase)
+        {
+            _clickListener.MapClicked += OnMapClicked;
+            _currentBase = clickedBase;
+        }
 
-        _flagSetter.DestroyFlag(baseOfCreater.transform, flagPosition);
-        Base newBase = Instantiate(_basePrefab, basePosition, Quaternion.identity);
+        private void OnMapClicked(Vector3 flagPosition)
+        {
+            Transform flag = _flagSetter.ShowFlag(flagPosition, _currentBase.transform.position);
+            _currentBase.TakeFlag(flag);
+            _currentBase.WorkerBuiltBase += OnWorkerBuiltBase;
+        }
 
-        InitializeBase(newBase);
-        AddNewBase(newBase);
-        newBase.AddNewWorker(worker);
+        private void OnWorkerBuiltBase(Worker worker, Transform flagPosition, Base baseOfCreater)
+        {
+            Vector3 basePosition = flagPosition.position;
 
-        _clickListener.MapClicked -= OnMapClicked;
-        baseOfCreater.WorkerBuiltBase -= OnWorkerBuiltBase;
-    }
+            _flagSetter.DestroyFlag(baseOfCreater.transform, flagPosition);
+            Base newBase = Instantiate(_basePrefab, basePosition, Quaternion.identity);
 
-    private void InitializeBase(Base newBase)
-    {
-        newBase.GetComponent<Scanner>().SetResourseCollector(_resourseCollector);
-        newBase.TakeWorkerSpawner(_workerSpawner);
+            InitializeBase(newBase);
+            AddNewBase(newBase);
+            newBase.AddNewWorker(worker);
+
+            _clickListener.MapClicked -= OnMapClicked;
+            baseOfCreater.WorkerBuiltBase -= OnWorkerBuiltBase;
+        }
+
+        private void InitializeBase(Base newBase)
+        {
+            newBase.GetComponent<Scanner>().SetResourseCollector(_resourseCollector);
+            newBase.TakeWorkerSpawner(_workerSpawner);
+        }
     }
 }

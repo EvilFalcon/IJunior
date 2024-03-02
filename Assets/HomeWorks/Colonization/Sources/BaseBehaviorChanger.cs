@@ -2,60 +2,63 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Base))]
-public class BaseBehaviorChanger : MonoBehaviour
+namespace HomeWorks.Colonization.Sources
 {
-    private Dictionary<Type, IBaseBehavior> _states;
-    private Base _base;
-    private IBaseBehavior _currentState;
-
-    private void Awake()     
+    [RequireComponent(typeof(Base))]
+    public class BaseBehaviorChanger : MonoBehaviour
     {
-        _base = GetComponent<Base>();
-        InitiateStates();
-        SetStateByDefault();
-    }
+        private Dictionary<Type, IBaseBehavior> _states;
+        private Base _base;
+        private IBaseBehavior _currentState;
 
-    private void Update()
-    {
-        _currentState.Run();
-    }
+        private void Awake()     
+        {
+            _base = GetComponent<Base>();
+            InitiateStates();
+            SetStateByDefault();
+        }
 
-    public void SetWorkerBuildState()
-    {
-        if (_currentState != GetState<BaseSpawnWorkerBehavior>())
-            SetState(GetState<BaseSpawnWorkerBehavior>());
-    }
+        private void Update()
+        {
+            _currentState.Run();
+        }
 
-    public void SetNewBaseBiuldState()
-    {
-        if (_currentState != GetState<BaseBuildNewBaseBehavior>())
-            SetState(GetState<BaseBuildNewBaseBehavior>());
-    }
+        public void SetWorkerBuildState()
+        {
+            if (_currentState != GetState<BaseSpawnWorkerBehavior>())
+                SetState(GetState<BaseSpawnWorkerBehavior>());
+        }
 
-    private void InitiateStates()
-    {
-        _states = new Dictionary<Type, IBaseBehavior>();
+        public void SetNewBaseBiuldState()
+        {
+            if (_currentState != GetState<BaseBuildNewBaseBehavior>())
+                SetState(GetState<BaseBuildNewBaseBehavior>());
+        }
 
-        _states[typeof(BaseSpawnWorkerBehavior)] = new BaseSpawnWorkerBehavior(_base);
-        _states[typeof(BaseBuildNewBaseBehavior)] = new BaseBuildNewBaseBehavior(_base);
-    }
+        private void InitiateStates()
+        {
+            _states = new Dictionary<Type, IBaseBehavior>();
 
-    private void SetStateByDefault()
-    {
-        SetWorkerBuildState();
-    }
+            _states[typeof(BaseSpawnWorkerBehavior)] = new BaseSpawnWorkerBehavior(_base);
+            _states[typeof(BaseBuildNewBaseBehavior)] = new BaseBuildNewBaseBehavior(_base);
+        }
 
-    private void SetState(IBaseBehavior baseState)
-    {
-        _currentState = baseState;
-        _currentState.Enter();
-    }
+        private void SetStateByDefault()
+        {
+            SetWorkerBuildState();
+        }
 
-    private IBaseBehavior GetState<T>() where T : IBaseBehavior
-    {
-        Type type = typeof(T);
+        private void SetState(IBaseBehavior baseState)
+        {
+            _currentState = baseState;
+            _currentState.Enter();
+        }
 
-        return _states[type];
+        private IBaseBehavior GetState<T>() where T : IBaseBehavior
+        {
+            Type type = typeof(T);
+
+            return _states[type];
+        }
     }
 }

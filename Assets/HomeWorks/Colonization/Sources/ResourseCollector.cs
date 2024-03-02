@@ -2,51 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ResourseSpawner))]
-public class ResourseCollector : MonoBehaviour
+namespace HomeWorks.Colonization.Sources
 {
-    [SerializeField] private uint _spawnCount;
-
-    private ResourseSpawner _resourseSpawner;
-    private List<Copper> _resourses;
-    private float _delayTime = 4f;
-
-    private void Awake()
+    [RequireComponent(typeof(ResourseSpawner))]
+    public class ResourseCollector : MonoBehaviour
     {
-        _resourses = new List<Copper>();
-        _resourseSpawner = GetComponent<ResourseSpawner>();
-    }
+        [SerializeField] private uint _spawnCount;
 
-    private void Start()
-    {
-        StartCoroutine(AddNewResourses());
-    }
+        private ResourseSpawner _resourseSpawner;
+        private List<Copper> _resourses;
+        private float _delayTime = 4f;
 
-    public List<Copper> GiveResourses()
-    {
-        List<Copper> resourses = new List<Copper>();
-
-        for (int i = 0;i< _resourses.Count; i++)
+        private void Awake()
         {
-            resourses.Add(_resourses[i]);
-            _resourses.Remove(_resourses[i]);
+            _resourses = new List<Copper>();
+            _resourseSpawner = GetComponent<ResourseSpawner>();
         }
 
-        return resourses;
-    }
-
-    private IEnumerator AddNewResourses()
-    {
-        WaitForSeconds delay = new WaitForSeconds(_delayTime);
-
-        while (enabled)
+        private void Start()
         {
-            for (int i = 0; i < _spawnCount; i++)
+            StartCoroutine(AddNewResourses());
+        }
+
+        public List<Copper> GiveResourses()
+        {
+            List<Copper> resourses = new List<Copper>();
+
+            for (int i = 0;i < _resourses.Count; i++)
             {
-                _resourses.Add(_resourseSpawner.Spawn());
+                resourses.Add(_resourses[i]);
+                _resourses.Remove(_resourses[i]);
             }
 
-            yield return delay;
+            return resourses;
+        }
+
+        private IEnumerator AddNewResourses()
+        {
+            WaitForSeconds delay = new WaitForSeconds(_delayTime);
+
+            while (enabled)
+            {
+                for (int i = 0; i < _spawnCount; i++)
+                {
+                    _resourses.Add(_resourseSpawner.Spawn());
+                }
+
+                yield return delay;
+            }
         }
     }
 }

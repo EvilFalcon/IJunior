@@ -1,35 +1,40 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
-[RequireComponent(typeof(BirdMover))]
-public class Bird : MonoBehaviour
+namespace HomeWorks.FlappyTerminator.Scripts.Bird
 {
-    private BirdMover _mover;
-    private int _score;
-
-    public event UnityAction GameOver;
-    public event UnityAction<int> ScoreChanged;
-
-    private void Start()
+    [RequireComponent(typeof(BirdMover))]
+    public class Bird : MonoBehaviour
     {
-        _mover = GetComponent<BirdMover>();
-    }
+        private BirdMover _mover;
+        private int _score;
 
-    public void IncreaseScore()
-    {
-        _score++;
-        ScoreChanged?.Invoke(_score);
-    }
+        public event Action Died;
+        public event Action ScoreChanged;
+        public event Action Reset;
+
+        private void Start()
+        {
+            _mover = GetComponent<BirdMover>();
+        }
+
+        public void IncreaseScore()
+        {
+            _score++;
+            ScoreChanged?.Invoke();
+        }
     
-    public void ResetPlayer()
-    {
-        _score = 0;
-        ScoreChanged?.Invoke(_score);
-        _mover.ResetBird();
-    }
+        public void ResetPlayer()
+        {
+            _score = 0;
+            ScoreChanged?.Invoke();
+            _mover.ResetBird();
+        }
 
-    public void Die()
-    {
-        GameOver?.Invoke();
+        public void Die()
+        {
+            Died?.Invoke();
+            Reset?.Invoke();
+        }
     }
 }

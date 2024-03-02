@@ -1,48 +1,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlagSetter : MonoBehaviour
+namespace HomeWorks.Colonization.Sources
 {
-    [SerializeField] private GameObject _flagPrefab;
-
-    private Dictionary<Vector3, GameObject> _baseFlags;
-
-    private void Start()
+    public class FlagSetter : MonoBehaviour
     {
-        _baseFlags = new Dictionary<Vector3, GameObject>();
-    }
+        [SerializeField] private GameObject _flagPrefab;
 
-    public Transform ShowFlag(Vector3 flagPosition, Vector3 currentBasePosition)
-    {
-        GameObject flag;
+        private Dictionary<Vector3, GameObject> _baseFlags;
 
-        if (_baseFlags.ContainsKey(currentBasePosition))
+        private void Start()
         {
-            MoveFlag(flagPosition, _baseFlags[currentBasePosition]);
-            flag = _baseFlags[currentBasePosition];
-        }
-        else
-        {
-            flag = CreatFlag(flagPosition);
-            _baseFlags.Add(currentBasePosition, flag);
+            _baseFlags = new Dictionary<Vector3, GameObject>();
         }
 
-        return flag.transform;
-    }
+        public Transform ShowFlag(Vector3 flagPosition, Vector3 currentBasePosition)
+        {
+            GameObject flag;
 
-    public void DestroyFlag(Transform currentBase, Transform flag)
-    {
-        Destroy(flag.gameObject);
-        _baseFlags.Remove(currentBase.position);
-    }
+            if (_baseFlags.ContainsKey(currentBasePosition))
+            {
+                MoveFlag(flagPosition, _baseFlags[currentBasePosition]);
+                flag = _baseFlags[currentBasePosition];
+            }
+            else
+            {
+                flag = CreatFlag(flagPosition);
+                _baseFlags.Add(currentBasePosition, flag);
+            }
 
-    private GameObject CreatFlag(Vector3 flagPosition)
-    {
-        return Instantiate(_flagPrefab, flagPosition, Quaternion.identity);
-    }
+            return flag.transform;
+        }
 
-    private void MoveFlag(Vector3 newFlagPosition, GameObject flag)
-    {
-        flag.transform.position = newFlagPosition;
+        public void DestroyFlag(Transform currentBase, Transform flag)
+        {
+            Destroy(flag.gameObject);
+            _baseFlags.Remove(currentBase.position);
+        }
+
+        private GameObject CreatFlag(Vector3 flagPosition)
+        {
+            return Instantiate(_flagPrefab, flagPosition, Quaternion.identity);
+        }
+
+        private void MoveFlag(Vector3 newFlagPosition, GameObject flag)
+        {
+            flag.transform.position = newFlagPosition;
+        }
     }
 }

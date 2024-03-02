@@ -1,25 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+using HomeWorks.FlappyTerminator.Scripts.Shoot;
 using UnityEngine;
 
-public class BirdShooter : MonoBehaviour
+namespace HomeWorks.FlappyTerminator.Scripts.Bird
 {
-    [SerializeField] private Transform _shootPoint;
-    [SerializeField] private PlayerBullet _bullet;
-    [SerializeField] private Bird _bird;
-
-    private void Update()
+    public class BirdShooter : MonoBehaviour
     {
-        if (Input.GetMouseButtonDown(0))
+        [SerializeField] private Transform _shootPoint;
+        [SerializeField] private PlayerBullet _bullet;
+        [SerializeField] private Bird _bird;
+
+        private void Update()
         {
-            Shoot(_shootPoint);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Shoot(_shootPoint);
+            }
         }
-    }
 
-    public void Shoot(Transform shootPoint)
-    {
-        PlayerBullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity);
-        bullet.Initialize(_bird);
-        bullet.transform.rotation = _shootPoint.rotation;
+        public void Shoot(Transform shootPoint)
+        {
+            PlayerBullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity);
+            bullet.Initialize(_bird);
+            bullet.transform.rotation = _shootPoint.rotation;
+        }
     }
 }

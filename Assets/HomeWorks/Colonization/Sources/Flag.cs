@@ -1,3 +1,6 @@
 using UnityEngine;
 
-public class Flag : MonoBehaviour{}
+namespace HomeWorks.Colonization.Sources
+{
+    public class Flag : MonoBehaviour{}
+}

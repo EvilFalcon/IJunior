@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class WorkerSpawner : MonoBehaviour
+namespace HomeWorks.Colonization.Sources
 {
-    [SerializeField] private Worker _workerPrefab;
-
-    public Worker Spawn(Vector3 spawnPosition)
+    public class WorkerSpawner : MonoBehaviour
     {
-        return Instantiate(_workerPrefab, spawnPosition, Quaternion.identity);
+        [SerializeField] private Worker _workerPrefab;
+
+        public Worker Spawn(Vector3 spawnPosition)
+        {
+            return Instantiate(_workerPrefab, spawnPosition, Quaternion.identity);
+        }
     }
 }

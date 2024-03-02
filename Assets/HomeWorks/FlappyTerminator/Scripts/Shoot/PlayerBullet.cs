@@ -1,31 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+using HomeWorks.FlappyTerminator.Scripts.Enemys;
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+namespace HomeWorks.FlappyTerminator.Scripts.Shoot
 {
-    [SerializeField] private int _damage;
-    [SerializeField] private float _speed;
-    
-    private Bird _bird;
-    
-    private void Update()
+    public class PlayerBullet : MonoBehaviour
     {
-        transform.Translate(transform.right * (_speed * Time.deltaTime), Space.Self);
-    }
-
-    public void Initialize(Bird bird)
-    {
-        _bird = bird;
-    }
+        [SerializeField] private int _damage;
+        [SerializeField] private float _speed;
     
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Enemy enemy))
+        private Bird.Bird _bird;
+    
+        private void Update()
         {
-            _bird.IncreaseScore();
-            enemy.Die();
-            Destroy(gameObject);
+            transform.Translate(transform.right * (_speed * Time.deltaTime), Space.Self);
+        }
+
+        public void Initialize(Bird.Bird bird)
+        {
+            _bird = bird;
+        }
+    
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.TryGetComponent(out Enemy enemy))
+            {
+                _bird.IncreaseScore();
+                enemy.Die();
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -1,3 +1,6 @@
 using UnityEngine;
 
-public class Copper : MonoBehaviour{}
+namespace HomeWorks.Colonization.Sources
+{
+    public class Copper : MonoBehaviour{}
+}

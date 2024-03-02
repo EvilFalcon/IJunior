@@ -1,20 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Bird))]
-public class BirdCollisionHandler : MonoBehaviour
+namespace HomeWorks.FlappyTerminator.Scripts.Bird
 {
-    private Bird _bird;
-
-    private void Start()
+    [RequireComponent(typeof(Bird))]
+    public class BirdCollisionHandler : MonoBehaviour
     {
-        _bird = GetComponent<Bird>();
-    }
+        private Bird _bird;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        _bird.Die();
+        private void Start()
+        {
+            _bird = GetComponent<Bird>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            _bird.Die();
+        }
     }
 }

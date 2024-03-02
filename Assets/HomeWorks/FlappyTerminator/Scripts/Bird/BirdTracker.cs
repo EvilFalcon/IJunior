@@ -1,15 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BirdTracker : MonoBehaviour
+namespace HomeWorks.FlappyTerminator.Scripts.Bird
 {
-    [SerializeField] private Bird _bird;
-    [SerializeField] private float _xOffset;
-
-    private void Update()
+    public class BirdTracker : MonoBehaviour
     {
-        transform.position = new Vector3(_bird.transform.position.x - _xOffset, transform.position.y, transform.position.z);
+        [SerializeField] private Bird _bird;
+        [SerializeField] private float _xOffset;
+
+        private void Update()
+        {
+            transform.position = new Vector3(_bird.transform.position.x - _xOffset, transform.position.y, transform.position.z);
+        }
     }
 }

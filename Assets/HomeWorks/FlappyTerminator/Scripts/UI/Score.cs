@@ -1,26 +1,36 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Score : MonoBehaviour
+namespace HomeWorks.FlappyTerminator.Scripts.UI
 {
-    [SerializeField] private Bird _bird;
-    [SerializeField] private TMP_Text _score;
-
-    private void OnEnable()
+    public class Score : MonoBehaviour
     {
-        _bird.ScoreChanged += OnScoreChanged;
-    }
+        [SerializeField] private Bird.Bird _bird;
 
-    private void OnDisable()
-    {
-        _bird.ScoreChanged -= OnScoreChanged;
-    }
+        [SerializeField] private TMP_Text _view;
 
-    private void OnScoreChanged(int score)
-    {
-        _score.text = score.ToString();
+        private int _score;
+
+        private void OnEnable()
+        {
+            _bird.ScoreChanged += OnScoreChanged;
+            _bird.Reset += OnScoreChanged;
+        }
+
+        private void OnDisable()
+        {
+            _bird.ScoreChanged -= OnScoreChanged;
+            _bird.Reset -= OnScoreChanged;
+        }
+
+        private void OnScoreChanged() =>
+            _score++;
+
+        private void OnResetScore() =>
+            _score = 0;
+
+        private void UpdateView() =>
+            _view.text = _score.ToString();
     }
 }

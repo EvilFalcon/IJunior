@@ -1,6 +1,9 @@
-public interface IBaseBehavior 
+namespace HomeWorks.Colonization.Sources
 {
-    public void Enter();
+    public interface IBaseBehavior 
+    {
+        public void Enter();
 
-    public void Run();
+        public void Run();
+    }
 }

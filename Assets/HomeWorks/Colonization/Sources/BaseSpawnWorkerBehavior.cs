@@ -1,20 +1,23 @@
-public class BaseSpawnWorkerBehavior : IBaseBehavior
+namespace HomeWorks.Colonization.Sources
 {
-    private int _copperForSpawnWorker = 3;
-    private Base _base;
-
-    public BaseSpawnWorkerBehavior(Base currentbase)
+    public class BaseSpawnWorkerBehavior : IBaseBehavior
     {
-        _base = currentbase;
-    }
+        private int _copperForSpawnWorker = 3;
+        private Base _base;
 
-    public void Enter() { }
-
-    public void Run()
-    {
-        if (_base.TryPayCopper(_copperForSpawnWorker))
+        public BaseSpawnWorkerBehavior(Base currentbase)
         {
-            _base.SpawnWorker();
+            _base = currentbase;
+        }
+
+        public void Enter() { }
+
+        public void Run()
+        {
+            if (_base.TryPayCopper(_copperForSpawnWorker))
+            {
+                _base.SpawnWorker();
+            }
         }
     }
 }
