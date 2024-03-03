@@ -3,11 +3,8 @@ using UnityEngine;
 namespace HomeWorks.FlappyTerminator.Scripts.Shoot
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class EnemyBullet : MonoBehaviour
+    public class EnemyBullet : BaseBullet
     {
-        [SerializeField] private int _damage;
-        [SerializeField] private float _speed;
-
         private SpriteRenderer _spriteRenderer;
 
         private void Start()
@@ -15,11 +12,6 @@ namespace HomeWorks.FlappyTerminator.Scripts.Shoot
             _spriteRenderer = GetComponent<SpriteRenderer>();
 
             _spriteRenderer.flipX = true;
-        }
-
-        private void Update()
-        {
-            transform.Translate(Vector2.left * (_speed * Time.deltaTime), Space.World);
         }
     
         private void OnTriggerEnter2D(Collider2D collision)
